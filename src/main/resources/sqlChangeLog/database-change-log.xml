@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro
+        http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd ">
+
+<changeSet author="me" id="1">
+    <preConditions onFail="MARK_RAN">
+        <not><tableExists tableName="employee" /></not>
+        <not><tableExists tableName="join" /></not>
+        <not><tableExists tableName="join_time" /></not>
+        <not><tableExists tableName="project" /></not>
+        <not><tableExists tableName="project_role" /></not>
+    </preConditions>
+    <!--    employee    -->
+    <createTable tableName="employee">
+        <column name="id" type="VARCHAR(200)">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="name" type="NVARCHAR(100)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+    <!--    join    -->
+    <createTable tableName="join">
+        <column name="id" type="VARCHAR(200)">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="employee_id" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="project_id" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="project_role_id" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+    <!--    join_time   -->
+    <createTable tableName="join_time">
+        <column name="id" type="VARCHAR(200)">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="start_time" type="DATETIME">
+            <constraints nullable="false"/>
+        </column>
+        <column name="end_time" type="DATETIME">
+            <constraints nullable="false"/>
+        </column>
+        <column name="join_id" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+    <!--    project     -->
+    <createTable tableName="project">
+        <column name="id" type="VARCHAR(200)">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="name" type="NVARCHAR(200)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="start_time" type="DATETIME">
+            <constraints nullable="false"/>
+        </column>
+        <column name="end_time" type="DATETIME">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+    <!--    project_role     -->
+    <createTable tableName="project_role">
+        <column name="id" type="VARCHAR(200)">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="name" type="NVARCHAR(200)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="abbr" type="VARCHAR(50)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+</changeSet>
+</databaseChangeLog>

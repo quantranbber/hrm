@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: createEmployee
+      author: me
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            path: sqlScripts/Employee.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: createJoin
+      author: me
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            path: sqlScripts/Join.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+        id: createJoinTime
+        author: me
+        changes:
+            - sqlFile:
+                  dbms: mysql
+                  encoding: utf8
+                  path: sqlScripts/Join_time.sql
+                  relativeToChangelogFile: true
+                  splitStatements: true
+                  stripComments: true
+  - changeSet:
+        id: createProject
+        author: me
+        changes:
+            - sqlFile:
+                  dbms: mysql
+                  encoding: utf8
+                  path: sqlScripts/Project.sql
+                  relativeToChangelogFile: true
+                  splitStatements: true
+                  stripComments: true
+  - changeSet:
+        id: createProjectRole
+        author: me
+        changes:
+            - sqlFile:
+                  dbms: mysql
+                  encoding: utf8
+                  path: sqlChangeLog/sqlScripts/Project_role.sql
+                  relativeToChangelogFile: true
+                  splitStatements: true
+                  stripComments: true
